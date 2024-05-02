@@ -1,0 +1,53 @@
+
+      
+        <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: gray;
+    }
+    #quote {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+button{
+    margin-left: 46%;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100px;
+    margin-top: 10px;
+}
+</style>
+
+<body>
+    <!-- 2. **Motivational Quotes:**
+    - Include an array of motivational quotes.
+    - Display a random quote each day or each time the page is refreshed. -->
+    <div ><h1 id="quote"></h1></div>
+    <button onclick="getRandomQuote()">Get </button>
+
+</body>
+<script>
+      let quotes = ["When you have a dream, you've got to grab it and never let go.","Nothing is impossible. ...","There is nothing impossible to they who will try.","The bad news is time flies.","Life has got all those twists and turns.","Keep your face always toward the sunshine, and shadows will fall behind you"]
+
+
+function getRandomQuote() {
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  document.getElementById("quote").innerText = randomQuote;
+}
+
+// Display a random quote each day
+const today = new Date();
+const day = today.getDate();
+if (!localStorage.getItem("lastQuoteDay") || localStorage.getItem("lastQuoteDay")!== day) {
+  getRandomQuote();
+  localStorage.setItem("lastQuoteDay", day);
+}
+</script>
